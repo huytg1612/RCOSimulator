@@ -1,0 +1,15 @@
+E:\Mini projects\RCOSimilator\RCOSimilator\bin\Debug\net6.0\RCOSimilator.exe
+E:\Mini projects\RCOSimilator\RCOSimilator\bin\Debug\net6.0\RCOSimilator.deps.json
+E:\Mini projects\RCOSimilator\RCOSimilator\bin\Debug\net6.0\RCOSimilator.runtimeconfig.json
+E:\Mini projects\RCOSimilator\RCOSimilator\bin\Debug\net6.0\RCOSimilator.dll
+E:\Mini projects\RCOSimilator\RCOSimilator\bin\Debug\net6.0\RCOSimilator.pdb
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\RCOSimilator.csproj.AssemblyReference.cache
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\RCOSimilator.GeneratedMSBuildEditorConfig.editorconfig
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\RCOSimilator.AssemblyInfoInputs.cache
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\RCOSimilator.AssemblyInfo.cs
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\RCOSimilator.csproj.CoreCompileInputs.cache
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\RCOSimilator.dll
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\refint\RCOSimilator.dll
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\RCOSimilator.pdb
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\RCOSimilator.genruntimeconfig.cache
+E:\Mini projects\RCOSimilator\RCOSimilator\obj\Debug\net6.0\ref\RCOSimilator.dll
