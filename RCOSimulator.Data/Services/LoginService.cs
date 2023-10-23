@@ -5,6 +5,7 @@ using RCOSimulator.Data.Models;
 using RCOSimulator.Data.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -35,7 +36,7 @@ namespace RCOSimulator.Data.Services
             var security = new SecurityTokenDescriptor
             {
                 Subject = claimIdentity,
-                Expires = DateTime.UtcNow.AddMinutes(1),
+                Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature),
@@ -56,7 +57,14 @@ namespace RCOSimulator.Data.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             var validationParameters = GetValidationParameters();
             SecurityToken validatedToken;
-            IPrincipal principal = tokenHandler.ValidateToken(token, validationParameters, out validatedToken);
+            try
+            {
+                IPrincipal principal = tokenHandler.ValidateToken(token, validationParameters, out validatedToken);
+            }catch(Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
             return true;
         }
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RCOSimulator.Data.Extensions;
 
 namespace RCOSimulator.Data.Services
 {
@@ -48,9 +49,9 @@ namespace RCOSimulator.Data.Services
             return mapper.Map<CardModel>(card);
         }
 
-        public List<CardModel> Get()
+        public List<CardModel> Get(QueryParameters parameters)
         {
-            var cards = _repo.GetAll().Include(c => c.AccessGroups).Include(c => c.User).ToList();
+            var cards = _repo.GetAll().Get(parameters).ToList();
             var mapper = _uow.GetMapper();
             return cards.ToList().Select(c => mapper.Map<CardModel>(c)).ToList();
         }

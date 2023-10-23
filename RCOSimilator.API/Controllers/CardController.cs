@@ -35,9 +35,13 @@ namespace RCOSimilator.API.Controllers
 
         [HttpGet]
         [ApiKey]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] QueryParameters parameters)
         {
-            return Ok(_service.Get());
+            var cards = _service.Get(parameters);
+            return Ok(new ListCardModel
+            {
+                Cards = cards
+            });
         }
 
         [HttpGet("{id}")]

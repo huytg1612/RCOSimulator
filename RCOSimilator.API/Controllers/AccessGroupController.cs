@@ -34,11 +34,14 @@ namespace RCOSimilator.API.Controllers
 
         [HttpGet]
         [ApiKey]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery]QueryParameters parameters)
         {
             var service = _uow.GetService<AccessGroupService>();
-            var data = service.Get();
-            return Ok(data);
+            var data = service.Get(parameters);
+            return Ok(new ListAccessGroupModel
+            {
+                AccessGroups = data
+            });
         }
     }
 }

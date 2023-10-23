@@ -1,4 +1,5 @@
-﻿using RCOSimulator.Data.Globals;
+﻿using RCOSimulator.Data.Extensions;
+using RCOSimulator.Data.Globals;
 using RCOSimulator.Data.Repositories;
 using RCOSimulator.Data.ViewModels;
 using System;
@@ -31,9 +32,9 @@ namespace RCOSimulator.Data.Services
             return mapper.Map<AccessGroupModel>(entity);
         }
 
-        public List<AccessGroupModel> Get()
+        public List<AccessGroupModel> Get(QueryParameters parameters)
         {
-            var accessGroups = _repo.GetAll();
+            var accessGroups = _repo.GetAll().Pagination(parameters.Offset, parameters.Limit);
             var mapper = _uow.GetMapper();
             return accessGroups.Select(a => mapper.Map<AccessGroupModel>(a)).ToList();
         }

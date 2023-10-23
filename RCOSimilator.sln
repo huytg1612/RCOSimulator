@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RCOSimilator.API", "RCOSimi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RCOSimulator.Data", "RCOSimulator.Data\RCOSimulator.Data.csproj", "{7AA9FCC3-2092-48D9-93C0-4935EC97F062}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCOSimulator.Test", "RCOSimulator.Test\RCOSimulator.Test.csproj", "{8D478B66-6486-4875-85EC-23620A8299B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7AA9FCC3-2092-48D9-93C0-4935EC97F062}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AA9FCC3-2092-48D9-93C0-4935EC97F062}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AA9FCC3-2092-48D9-93C0-4935EC97F062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D478B66-6486-4875-85EC-23620A8299B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D478B66-6486-4875-85EC-23620A8299B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D478B66-6486-4875-85EC-23620A8299B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D478B66-6486-4875-85EC-23620A8299B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

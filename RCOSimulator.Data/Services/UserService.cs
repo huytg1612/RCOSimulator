@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RCOSimulator.Data.Extensions;
 using RCOSimulator.Data.Globals;
 using RCOSimulator.Data.Models;
 using RCOSimulator.Data.Repositories;
@@ -36,11 +37,11 @@ namespace RCOSimulator.Data.Services
             return mapper.Map<UserModel>(entity);
         }
 
-        public List<UserModel> Get()
+        public List<UserModel> Get(QueryParameters parameter)
         {
-            var cards = _repo.GetAll();
+            var users = _repo.GetAll().Pagination<User>(parameter.Offset, parameter.Limit);
             var mapper = _uow.GetMapper();
-            return cards.Select(u => mapper.Map<UserModel>(u)).ToList();
+            return users.Select(u => mapper.Map<UserModel>(u)).ToList();
         }
 
         public UserModel GetById(int id, bool isTracking = true)
