@@ -45,6 +45,7 @@ namespace RCOSimulator.Data.Models
             {
                 e.ToTable("Card");
                 e.HasKey(c => c.Id);
+                e.Property(c => c.Description).HasMaxLength(1000);
                 e.HasMany(c => c.AccessGroups).WithMany(a => a.Cards).UsingEntity<AccessGroupCard>();
 
             });

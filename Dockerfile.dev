@@ -1,0 +1,27 @@
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 as base
+EXPOSE 80
+EXPOSE 443
+WORKDIR /app
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 as migrate
+WORKDIR /src
+COPY ["RCOSimulator.Data/", "RCOSimulator.Data/"]
+RUN dotnet restore "RCOSimulator.Data/RCOSimulator.Data.csproj"
+RUN dotnet build "RCOSimulator.Data/RCOSimulator.Data.csproj" -c Release -o /app
+#Install dotnet-ef tool
+RUN dotnet tool install --global dotnet-ef
+#Add installed dotnet tool to PATH environment variable
+ENV PATH="$PATH:/root/.dotnet/tools"
+#Update database
+RUN dotnet ef database update --project "RCOSimulator.Data/"
+
+FROM migrate as build
+WORKDIR /src
+COPY --from=migrate . .
+COPY ["RCOSimilator.API/", "RCOSimilator.API/"]
+RUN dotnet restore "RCOSimilator.API/RCOSimilator.API.csproj"
+RUN dotnet build "RCOSimilator.API/RCOSimilator.API.csproj" -c Release -o /app 
+
+FROM base as final
+COPY --from=build /app .
+ENTRYPOINT ["dotnet", "RCOSimilator.API.dll"]

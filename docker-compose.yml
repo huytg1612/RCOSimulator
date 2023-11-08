@@ -1,0 +1,25 @@
+version: '1.0'
+
+services:
+  rco-api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    ports:
+      - 16129:80
+    environment:
+      - SQL_SERVER=8081f2e18f37
+      - SQL_USER=sa
+      - SQL_PASSWORD=123456
+      - SQL_PORT=1433
+      - SQL_DATABASE=RCO
+  sqlserver:
+    container_name: rcodev
+    image: "mcr.microsoft.com/mssql/server:latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Huy99717350!
+      - MSSQL_PID=Express
+
+# "bash"
+# /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "Huy99717350!"      
