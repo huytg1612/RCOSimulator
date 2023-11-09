@@ -5,6 +5,13 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 as migrate
 WORKDIR /src
+
+ENV SQL_SERVER=rcodev.c6p1vxvcy6ts.ap-southeast-1.rds.amazonaws.com
+ENV SQL_USER=admin
+ENV SQL_PASSWORD=Huy99717350
+ENV SQL_PORT=1433
+ENV SQL_DATABASE=RCO
+
 COPY ["RCOSimulator.Data/", "RCOSimulator.Data/"]
 RUN dotnet restore "RCOSimulator.Data/RCOSimulator.Data.csproj"
 RUN dotnet build "RCOSimulator.Data/RCOSimulator.Data.csproj" -c Release -o /app

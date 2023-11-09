@@ -68,7 +68,8 @@ builder.Services.AddHttpContextAccessor(); //Enable to acces the HttpContext
 //    };
 //});
 #endregion
-builder.Services.AddSqlServer<RCODbContext>(builder.Configuration["ConnectionStrings"], optionsAction: optionBuilders =>
+var connectionString = RCODbContext.GetConnectionStringFromEnvironment() ?? builder.Configuration["ConnectionStrings"];
+builder.Services.AddSqlServer<RCODbContext>(connectionString, optionsAction: optionBuilders =>
 {
     //optionBuilders.UseLazyLoadingProxies();
 });

@@ -16,11 +16,22 @@ namespace RCOSimulator.Data.Models
 
         public RCODbContext(DbContextOptions<RCODbContext> options) : base(options) { }
 
-        public const string ConnectionString = "Server=DESKTOP-4OVFOA0;Database=RCO;User Id=sa;Password=123456";
+        public const string ConnectionString = $"Server=DESKTOP-4OVFOA0;Database=RCO;User Id=sa;Password=123456";
+
+        public static string GetConnectionStringFromEnvironment()
+        {
+            return $"Server={Environment.GetEnvironmentVariable("SQL_SERVER")},{Environment.GetEnvironmentVariable("SQL_PORT")};" +
+                $"Database={Environment.GetEnvironmentVariable("SQL_DATABASE")};" +
+                $"User Id={Environment.GetEnvironmentVariable("SQL_USER")};" +
+                $"Password={Environment.GetEnvironmentVariable("SQL_PASSWORD")}";
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConnectionString);
+            var connectionString = GetConnectionStringFromEnvironment();
+
+            Console.WriteLine("RCO ConnectionString: " + connectionString);
+            optionsBuilder.UseSqlServer(connectionString);
             //optionsBuilder.UseLazyLoadingProxies();
             base.OnConfiguring(optionsBuilder);
         }

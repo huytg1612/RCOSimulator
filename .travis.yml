@@ -1,0 +1,8 @@
+language: csharp
+services:
+ - docker
+
+after_success:
+ - docker build -t huytg1999/rco-api -f Dockerfile.dev .
+ - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+ - docker push huytg1999/rco-api

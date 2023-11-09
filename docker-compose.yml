@@ -7,12 +7,12 @@ services:
       context: .
     ports:
       - 16129:80
-    environment:
-      - SQL_SERVER=8081f2e18f37
-      - SQL_USER=sa
-      - SQL_PASSWORD=123456
-      - SQL_PORT=1433
-      - SQL_DATABASE=RCO
+    # environment:
+    #   - SQL_SERVER=rcodev.c6p1vxvcy6ts.ap-southeast-1.rds.amazonaws.com
+    #   - SQL_USER=admin
+    #   - SQL_PASSWORD=Huy99717350
+    #   - SQL_PORT=1433
+    #   - SQL_DATABASE=RCO
   sqlserver:
     container_name: rcodev
     image: "mcr.microsoft.com/mssql/server:latest"
@@ -22,4 +22,6 @@ services:
       - MSSQL_PID=Express
 
 # "bash"
-# /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "Huy99717350!"      
+# /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "Huy99717350!"
+
+#RDS - inbound rule alow Port 1433 and IPv4 to access
