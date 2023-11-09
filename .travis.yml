@@ -17,3 +17,15 @@ after_success:
  - docker build -t huytg1999/rco-api -f Dockerfile.dev .
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
  - docker push huytg1999/rco-api
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-1"
+  app: "rco-api"
+  env: "rco-api-env-latest"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-560176329885"
+  bucket_path: "rco-api"
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
+  on:
+    branch: master
